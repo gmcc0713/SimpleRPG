@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Rewards>
+	<Reward>0
+			<Gold> 200 </Gold>
+			<Xp> 1000 </Xp>
+			<Item>
+				<ItemId> 1 </ItemId>
+				<ItemAmount> 1 </ItemAmount>
+			</Item>
+	</Reward>
+	<Reward>1
+		<Gold> 300 </Gold>
+		<Xp> 1500 </Xp>
+		<Item>
+			<ItemId> 1 </ItemId>
+			<ItemAmount> 1 </ItemAmount>
+		</Item>
+	</Reward>
+</Rewards>
+	
+	

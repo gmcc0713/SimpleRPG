@@ -1,0 +1,7 @@
+SkillID,SkillImage,SkillName,SkillCoolTime,SkillBeforeID,SkillDiscription,SkillMP,SkillValue
+0,SkillIcon/Skill_0,전사의 포효,15,-1,10초동안 공격력을 일정량 증가시킨다.,50,10
+1,SkillIcon/Skill_1,아이스 슬래쉬,15,0,강한 검기를 날려서 적을 공격한다,50,5
+2,SkillIcon/Skill_2,아이스 브레이크,15,0,강력한 내려찍기로 적을 공격한다,150,5
+3,SkillIcon/Skill_3,파이어 스톰,15,1,운석을 상대방 머리로 떨어뜨린다.,200,5
+4,SkillIcon/Skill_4,성기사의 가호,15,2,1초동안 무적이 된다.,100,1
+ 

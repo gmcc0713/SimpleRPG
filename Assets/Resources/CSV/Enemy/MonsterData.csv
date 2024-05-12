@@ -1,0 +1,5 @@
+Id,MonsterName,MonsterType,SearchRange,AttackRange,AttackDuration,AttackDamage,MaxHealth,MoveSpeed,dropItemID
+0,철갑거북,Turtle,7,3,3,50,200,5,1
+1,외눈 슬라임,Slime,7,3,3,70,500,5,0
+2,스켈레톤,Skeleton,10,3,3,150,1000,5,2
+3,골렘,Golam,20,5,3,500,10000,5,2

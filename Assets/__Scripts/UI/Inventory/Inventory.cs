@@ -62,13 +62,34 @@ public class Inventory
 
 
     }
+   
+    public void ItemUse(int ivSlotNum,int quickSlotNum)
+    {
+        PortionItem pitem = inventoryItems[ivSlotNum] as PortionItem;
+        if (pitem == null)
+        {
+            return;
+        }
+        pitem.ItemUse();
+        pitem.amount--;
+
+        UIManager.Instance._InventoryUI.UpdateSlotUI(pitem);
+
+        QuickSlotManager.Instance.UpdateQuickSlotByQuickSlotNum(quickSlotNum);
+
+        if (pitem.amount<=0)
+        {
+            UIManager.Instance._QuickSlotUI.RemoveItem(quickSlotNum);
+            RemoveItem(ivSlotNum);
+        }
+    }
     public void AddPortionItem(int id, int amount)
     {
         for (int i = 0; i < inventoryItems.Count; i++)
         {
             if (!inventoryItems[i].isEquipment)
             {
-                if(inventoryItems[i] is PortionItem cItem)
+                if (inventoryItems[i] is PortionItem cItem)
                 {
                     if (cItem.id == id && cItem.amount < itemMaxAmount)        //해당아이템을 이미 보유하고 있다면 
                     {
@@ -95,26 +116,6 @@ public class Inventory
 
 
 
-    }
-    public void ItemUse(int ivSlotNum,int quickSlotNum)
-    {
-        PortionItem pitem = inventoryItems[ivSlotNum] as PortionItem;
-        if (pitem == null)
-        {
-            return;
-        }
-        pitem.ItemUse();
-        pitem.amount--;
-
-        UIManager.Instance._InventoryUI.UpdateSlotUI(pitem);
-
-        QuickSlotManager.Instance.UpdateQuickSlotByQuickSlotNum(quickSlotNum);
-
-        if (pitem.amount<=0)
-        {
-            UIManager.Instance._QuickSlotUI.RemoveItem(quickSlotNum);
-            RemoveItem(ivSlotNum);
-        }
     }
     public void AddCountableItem(int id, int amount)                    //갯수 샐수있는 아이템을 얻었을때
     {

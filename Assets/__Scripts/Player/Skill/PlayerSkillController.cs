@@ -39,7 +39,7 @@ public class PlayerSkillController : MonoBehaviour
     }
     public void SKillInit()
     {
-        List<string[]> skillDatas = SCVLoadManager.Instance.Load("CSV/Skill/SkillDatas");
+        List<string[]> skillDatas = CSVLoadManager.Instance.Load("CSV/Skill/SkillDatas");
 
         Skill clone = new WarriorBuffSkill();
         clone.SetDatas(skillDatas[0]);

@@ -46,7 +46,7 @@ public class EnemyManager : MonoBehaviour
     }
     void LoadMonsterDatas()
     {
-        enemyDatas = SCVLoadManager.Instance.Load("CSV/Enemy/MonsterData");
+        enemyDatas = CSVLoadManager.Instance.Load("CSV/Enemy/MonsterData");
         for (int i =0;i<enemyDatas.Count;i++)
         {
 

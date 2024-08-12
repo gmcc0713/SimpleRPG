@@ -36,13 +36,13 @@ public class ItemDataManager : MonoBehaviour
     }
     public void LoadItemData()
     {
-        List< string[]> itemDatas = SCVLoadManager.Instance.Load("CSV/Item/ItemDatas");
-        List< string[]> equipmentDatas = SCVLoadManager.Instance.Load("CSV/Item/Equipment/EquipmentDatas");
-        List< string[]> weaponDatas = SCVLoadManager.Instance.Load("CSV/Item/Equipment/WeaponDatas");
-        List< string[]> armorDatas = SCVLoadManager.Instance.Load("CSV/Item/Equipment/ArmorDatas");
+        List< string[]> itemDatas = CSVLoadManager.Instance.Load("CSV/Item/ItemDatas");
+        List< string[]> equipmentDatas = CSVLoadManager.Instance.Load("CSV/Item/Equipment/EquipmentDatas");
+        List< string[]> weaponDatas = CSVLoadManager.Instance.Load("CSV/Item/Equipment/WeaponDatas");
+        List< string[]> armorDatas = CSVLoadManager.Instance.Load("CSV/Item/Equipment/ArmorDatas");
 
-        List< string[]> potionDatas = SCVLoadManager.Instance.Load("CSV/Item/PotionDatas");
-        List< string[]> etcDatas = SCVLoadManager.Instance.Load("CSV/Item/ETCDatas");
+        List< string[]> potionDatas = CSVLoadManager.Instance.Load("CSV/Item/PotionDatas");
+        List< string[]> etcDatas = CSVLoadManager.Instance.Load("CSV/Item/ETCDatas");
         for( int i =0; i < itemDatas.Count; i++)
         {
             switch (itemDatas[i][1])

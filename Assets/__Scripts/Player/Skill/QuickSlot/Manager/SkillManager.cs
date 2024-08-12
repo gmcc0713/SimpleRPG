@@ -25,7 +25,7 @@ public class SkillManager : MonoBehaviour
 
 
         m_SkillList = new List<Skill>();
-        List<string[]> skillDatas = SCVLoadManager.Instance.Load("CSV/Skill/SkillDatas");
+        List<string[]> skillDatas = CSVLoadManager.Instance.Load("CSV/Skill/SkillDatas");
         m_SkillList.Add(new WarriorBuffSkill());
         m_SkillList[0].SetDatas(skillDatas[0]);
 

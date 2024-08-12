@@ -26,7 +26,7 @@ public class PlayerDataManager : MonoBehaviour
     }
     public void LoadEXPData()
     {
-        List<string[]> expDatas = SCVLoadManager.Instance.Load("CSV/EXPDatas");
+        List<string[]> expDatas = CSVLoadManager.Instance.Load("CSV/EXPDatas");
         for(int i =0;i<expDatas.Count;i++)
         {
             m_EXPValueByLevel.Add(int.Parse(expDatas[i][1]));

@@ -6,6 +6,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
+using Cinemachine;
+
 public class DungeonManager : MonoBehaviour
 {
     public static DungeonManager Instance { get; private set; }
@@ -28,6 +30,7 @@ public class DungeonManager : MonoBehaviour
 
     [SerializeField] private DungeonReward m_DungeonClear;
     [SerializeField] private PlayableDirector m_Clear;
+    [SerializeField] private CinemachineFreeLook m_cam;
     private void Start()
     {
         Initialize();
@@ -42,6 +45,9 @@ public class DungeonManager : MonoBehaviour
         m_curRemainMonsterCount = m_DungeonMonsterCount;
         UpdateMonsterCount();
         PlayerController.Instance.ResetPlayer();
+
+        m_cam.Follow = PlayerController.Instance.transform;
+        m_cam.LookAt = PlayerController.Instance.transform;
     }
     public Slider GetHealthbar()
     {

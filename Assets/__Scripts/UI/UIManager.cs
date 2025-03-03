@@ -145,7 +145,7 @@ public class UIManager : MonoBehaviour
     }
     public void HidePanelByKey(int key)
     {
-        m_bOpenUI[key] =false ;
+        m_bOpenUI[key] =false;
     }
     public void QusetAnnounceUIUpdate()
     {

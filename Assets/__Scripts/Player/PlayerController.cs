@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
         gameObject.transform.position = Vector3.zero;
         canAct = true;
         m_canAttack = true;
+
         UIManager.Instance._PlayerDataUI.UpdateUI(m_iCurPlayerHealth / m_statsData._StatsData.HP, m_iCurPlayerMP / m_statsData._StatsData.MP,
                         m_PlayerData._curEXP / m_PlayerData._EXP, m_PlayerData._sUserName);
         UIManager.Instance._PlayerDataUI.SetPlayeLVUI(m_PlayerData._LV);
@@ -133,7 +134,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
-        if (isAttack)
+        if (isAttack || !transform)
         {
             return;
         }

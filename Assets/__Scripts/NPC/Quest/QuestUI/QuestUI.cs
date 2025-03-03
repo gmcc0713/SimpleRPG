@@ -14,6 +14,8 @@ public class QuestUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_Reward;
     [SerializeField] Button m_ClearQuestBtn;
     [SerializeField] private QuestAnnounceSetting m_questAnnounceSetting;
+    [SerializeField] private GameObject m_QuestList;
+
     public QuestAnnounceSetting _questAnnounceSetting => m_questAnnounceSetting;
 
     [SerializeField] private List<QuestNode> questNodes;
@@ -29,7 +31,10 @@ public class QuestUI : MonoBehaviour
     {
         pools.Initialize();
     }
-
+    public void OpenQuestList(bool b)
+    {
+        m_QuestList.SetActive(b);
+    }
     public void QuestAddAndMakeQuestNode(int idx)
     {
         QuestNode node = new QuestNode();

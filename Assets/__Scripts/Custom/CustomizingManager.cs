@@ -24,6 +24,8 @@ public class CustomizingManager : MonoBehaviour
     void Initialize()
     {
         PlayerController.Instance.SetCanAct(false);
+        
+
     }
     public void ClickRightBtn(int type)
     {

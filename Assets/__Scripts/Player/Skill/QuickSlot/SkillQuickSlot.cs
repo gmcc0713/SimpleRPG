@@ -25,11 +25,9 @@ public class SkillQuickSlot : QuickSlot
         UIManager.Instance._QuickSlotUI.QuickSlotUIUpdate(m_iSlotNum,skillID);
         m_bIsEmpty = false;
         m_iMaxCoolTime = PlayerController.Instance._PlayerSkill.GetSkillByIndex(m_iID)._data.m_fCoolTime;
-        Debug.Log("setskill" + m_bIsEmpty);
     }
     public void UpdateUI()
     {
-        Debug.Log("1");
         UIManager.Instance._QuickSlotUI.QuickSlotUIUpdate(m_iSlotNum, m_iID);
     }
     public override void IsPressedKey()
@@ -42,7 +40,6 @@ public class SkillQuickSlot : QuickSlot
 
         if (Input.GetKeyDown((KeyCode)Enum.Parse(typeof(KeyCode),code)))
         {
-            Debug.Log("Pressskill");
             m_bCanUse = false;
 
      

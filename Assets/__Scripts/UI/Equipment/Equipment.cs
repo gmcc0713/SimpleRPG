@@ -63,7 +63,9 @@ public class Equipment : MonoBehaviour
         equipmentItems[(int)type].slotNum = (int)type;  //해당 아이템 슬롯번호 추가
         characterAppearanceManager.ChangeParts(type, ItemDataManager.Instance.FindApperanceID(item.id));//외형변화
         UIManager.Instance._EquipmentUI.UpdateItem(item.id, (int)type);
-        PlayerController.Instance.SetWeaponDamage(((WeaponData)ItemDataManager.Instance.FindItem(item.id)).AttackDamage);
+
+        if(ItemDataManager.Instance.FindItem(item.id) is WeaponData weapon)
+            PlayerController.Instance.SetWeaponDamage(weapon.AttackDamage);
         
 
     }

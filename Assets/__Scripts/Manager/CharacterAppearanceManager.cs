@@ -27,7 +27,7 @@ public class CharacterAppearanceManager : MonoBehaviour
     public void ChangeParts(EquipmentType type,int appearanceID)
     {
         int EquipmentIndex = (int)type;
-        if(EquipmentType.Helmet == type) { PlayerController.Instance._PlayerCustom.EquipmentHelmet(); }
+        if(EquipmentType.Helmet == type) {Debug.Log(PlayerController.Instance._PlayerCustom); PlayerController.Instance._PlayerCustom.EquipmentHelmet(); }
         charecterEquipmentParts[EquipmentIndex].transform.GetChild(charecterPartsCurIndexs[EquipmentIndex]).gameObject.SetActive(false);
         charecterEquipmentParts[EquipmentIndex].transform.GetChild(appearanceID).gameObject.SetActive(true);
         charecterPartsCurIndexs[EquipmentIndex] = appearanceID;

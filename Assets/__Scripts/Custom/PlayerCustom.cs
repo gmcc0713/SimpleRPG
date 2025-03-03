@@ -8,7 +8,7 @@ public class PlayerCustom : MonoBehaviour
     [SerializeField] private GameObject[] m_Ears;
     [SerializeField] private GameObject[] m_Faces;
 
-   [SerializeField] private int[] m_lastIdx;
+    [SerializeField] private int[] m_lastIdx;
     private void Start()
     {
         Initialize();
@@ -25,6 +25,7 @@ public class PlayerCustom : MonoBehaviour
 
     public void EquipmentHelmet()
     {
+        Debug.Log(m_lastIdx[0]);
         m_Hairs[m_lastIdx[0]].SetActive(false);
         m_Hairs[0].SetActive(true);
     }

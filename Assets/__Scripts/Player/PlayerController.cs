@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public bool m_canAttack;
     private bool isMove = false;
     private bool isAttack;
-    private PlayerCustom m_PlayerCustom;
+
 
     public bool _isAttack { get; set; }
     public bool _isMove { get; set; }
@@ -52,8 +52,9 @@ public class PlayerController : MonoBehaviour
     public bool _canAct => canAct;
 
     [SerializeField] private bool m_bisFirst;
+    public AnimationEventSystem _ParticleSystem => m_ParticleSystem;
     
-     private PlayerData m_PlayerData;
+    private PlayerData m_PlayerData;
     [SerializeField] private PlayerStats m_statsData;
     [SerializeField]  private float m_iCurPlayerHealth;
     [SerializeField]  private float m_iCurPlayerMP;
@@ -61,7 +62,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerSkillController m_PlayerSkill;
     [SerializeField] private GameObject m_CustomPanel;
     [SerializeField]private AnimationEventSystem m_ParticleSystem;
-    public AnimationEventSystem _ParticleSystem => m_ParticleSystem;
+    [SerializeField] private PlayerCustom m_PlayerCustom;
+
     void Update()
     {
         if(canAct)
@@ -69,6 +71,10 @@ public class PlayerController : MonoBehaviour
     }
    public void Initialize()
     {
+        if(m_bisFirst)
+            UIManager.Instance.LockUnLockMouseCursor(true);
+        else
+            UIManager.Instance.LockUnLockMouseCursor(false);
 
         cam = Camera.main.transform;
         if(m_bisFirst)
@@ -161,6 +167,16 @@ public class PlayerController : MonoBehaviour
         speed = runSpeed;
 
     }
+    public void UIOpenKey(InputAction.CallbackContext context)
+    {
+
+        if (context.performed) // 키가 눌렸을 때만 실행
+        {
+            string keyPressed = context.control.name; // 눌린 키 이름 가져오기
+            UIManager.Instance.ShowPanelByKey(keyPressed);
+        }
+    }
+
     public void RunModeOff(InputAction.CallbackContext context)
     {
         speed = walkSpeed;
@@ -297,6 +313,8 @@ public class PlayerController : MonoBehaviour
    public void SetCanAct(bool canActing)
     {
             canAct = canActing;
+            animator.SetBool("IsMove", false);
+            animator.SetFloat("Speed", 0);
     }
     
     public void AddExp(float exp)

@@ -36,15 +36,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private EquipmentUI m_EquipmentUI;
     [SerializeField] private StatsUI m_StatsUI;
     [SerializeField] private PlayerDataUI m_PlayerDataUI;
+
     [SerializeField] private QuestUI m_QuestUI;
     [SerializeField] private QuickSlotUIController m_QuickSlotUI;
     [SerializeField] private SkillUIController m_skillUIController;
     [SerializeField] private GameOverText m_gameOverText;
+
     [SerializeField] private bool m_btitle;
     [SerializeField] private bool m_bOpenPanel;
     private float x;
     private float y;
 
+    private bool[] m_bOpenUI = new bool[5];
 
     public QuestUI _QuestUI => m_QuestUI;
     public StatsUI _StatsUI => m_StatsUI;
@@ -62,7 +65,6 @@ public class UIManager : MonoBehaviour
         if (m_btitle)
             return;
         cinemachineFreeLook.m_XAxis.m_MaxSpeed = mouseSensivitySlider.value * 300f;
-
         m_InventoryUI.Initialize();
         m_EquipmentUI.Initialize();
         m_StatsUI.Initalize();
@@ -96,9 +98,80 @@ public class UIManager : MonoBehaviour
     {
         m_QuestUI.SetQuestInfoData(data);
     }
+    public void ShowPanelByKey(string key)
+    {
+        switch(key)
+        {
+            case "i":
+                if (m_bOpenUI[0])
+                    m_InventoryUI.gameObject.SetActive(false);
+                else
+                    m_InventoryUI.gameObject.SetActive(true);
+                m_bOpenUI[0] = !m_bOpenUI[0];
+                LockUnLockMouseCursor(m_bOpenUI[0]);
+                break;
+            case "u":
+                if (m_bOpenUI[1])
+                    m_EquipmentUI.gameObject.SetActive(false);
+                else
+                    m_EquipmentUI.gameObject.SetActive(true);
+                m_bOpenUI[1] = !m_bOpenUI[1];
+                LockUnLockMouseCursor(m_bOpenUI[1]);
+                break;
+            case "k":
+                if (m_bOpenUI[2])
+                    m_skillUIController.gameObject.SetActive(false);
+                else
+                    m_skillUIController.gameObject.SetActive(true);
+                m_bOpenUI[2] = !m_bOpenUI[2];
+                LockUnLockMouseCursor(m_bOpenUI[2]);
+                break;
+            case "j":
+                    m_QuestUI.OpenQuestList(m_bOpenUI[3]);
+                    m_bOpenUI[3] = !m_bOpenUI[3];
+                    LockUnLockMouseCursor(m_bOpenUI[3]);
+                break;
+            case "p":
+                if (m_bOpenUI[4])
+                    m_StatsUI.gameObject.SetActive(false);
+                else
+                    m_StatsUI.gameObject.SetActive(true);
+                m_bOpenUI[4] = !m_bOpenUI[4];
+                LockUnLockMouseCursor(m_bOpenUI[4]);
+
+                break;
+        }
+
+    }
+    public void HidePanelByKey(int key)
+    {
+        m_bOpenUI[key] =false ;
+    }
     public void QusetAnnounceUIUpdate()
     {
 
+    }
+    public void LockUnLockMouseCursor(bool mouse)
+    {
+        LockUnLockMouseMove(mouse);
+        if (mouse)
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+
+        }
+        else
+        {
+            foreach (bool b in m_bOpenUI)
+            {
+                if (b)
+                    return;
+            }
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+        }
     }
     public void SkillUIUpdateAll()
     {
@@ -110,7 +183,7 @@ public class UIManager : MonoBehaviour
     }
     public void LockUnLockMouseMove(bool b)
     {
-        if(b)
+        if (b)
         {
             if (cinemachineFreeLook.m_XAxis.m_MaxSpeed == 0 || cinemachineFreeLook.m_YAxis.m_MaxSpeed ==0)
             {
@@ -123,7 +196,6 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("x " + x.ToString() + " y " + y.ToString());
             cinemachineFreeLook.m_XAxis.m_MaxSpeed = x;
             cinemachineFreeLook.m_YAxis.m_MaxSpeed = y;
         }

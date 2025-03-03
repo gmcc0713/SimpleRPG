@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 
 
-
-public class Inventory
+public class Inventory : MonoBehaviour
 {
     public List<Item> inventoryItems;       //현재 내가 가지고 있는 아이템
     [SerializeField] private int itemMaxAmount = 64;

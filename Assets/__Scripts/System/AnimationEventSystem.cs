@@ -44,7 +44,6 @@ public class AnimationEventSystem : MonoBehaviour
     }
     public void ParticleEnd(int num)
     {
-        Debug.Log("end");
         if(num == 10)
         {
             PlayerController.Instance.SetCantDamaged(false);
@@ -57,7 +56,6 @@ public class AnimationEventSystem : MonoBehaviour
     }
     public void SetPlayerCanAct()
     {
-        Debug.Log("SetAct");
         PlayerController.Instance.SetCanAct(true);
 
     }

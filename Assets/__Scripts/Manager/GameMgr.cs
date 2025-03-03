@@ -33,6 +33,7 @@ public class GameMgr : MonoBehaviour
         playerInput.actions["Move"].performed += PlayerController.Instance.OnMove;                               //wasd 움직이기
         playerInput.actions["Move"].canceled += PlayerController.Instance.OnMove;
         playerInput.actions["MouseLeftClick"].performed += PlayerController.Instance.OnMouseButtonDown;          //공격(마우스왼쪽)
+        playerInput.actions["UIOpenKey"].performed += PlayerController.Instance.UIOpenKey;          //공격(마우스왼쪽)
 
 
         //playerInput.actions["InteractionButtonClick"].performed += ThirdPersonMovement.Instance.OnMouseButtonDown;          //상호작용(space)
@@ -48,7 +49,9 @@ public class GameMgr : MonoBehaviour
         playerInput.actions["RunMode"].canceled -= PlayerController.Instance.RunModeOff;
         playerInput.actions["Move"].performed -= PlayerController.Instance.OnMove;
         playerInput.actions["Move"].canceled -= PlayerController.Instance.OnMove;
+
         playerInput.actions["MouseLeftClick"].performed -= PlayerController.Instance.OnMouseButtonDown;
+        playerInput.actions["UIOpenKey"].performed -= PlayerController.Instance.UIOpenKey;          //공격(마우스왼쪽)
 
     }
     public void BGMChange()

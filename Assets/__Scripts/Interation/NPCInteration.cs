@@ -6,6 +6,7 @@ public class NPCInteration : InteractionObject
 {
     public override void PressInteractionKey()
     {
+        UIManager.Instance.LockUnLockMouseCursor(true);
         gameObject.GetComponent<NPCController>().UseInterationKey();
     }
 }

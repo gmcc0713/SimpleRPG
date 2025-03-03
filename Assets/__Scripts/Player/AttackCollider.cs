@@ -37,7 +37,6 @@ public class AttackCollider : MonoBehaviour
         sumDamage += m_playerDamage;
         sumDamage += m_weaponDamage;
         sumDamage += m_AdittionalDamage;
-        Debug.Log(sumDamage);
 
         return sumDamage;
     }
